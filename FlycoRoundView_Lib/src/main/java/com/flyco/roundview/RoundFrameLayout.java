@@ -1,6 +1,7 @@
 package com.flyco.roundview;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
@@ -45,6 +46,18 @@ public class RoundFrameLayout extends FrameLayout {
             delegate.setCornerRadius(getHeight() / 2);
         } else {
             delegate.setBgSelector();
+        }
+    }
+    
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        if (delegate.isDrawOutParent()) {
+            //绘制到父布局外边
+            super.dispatchDraw(canvas);
+        } else {
+            delegate.drawOutParentBefore(canvas);
+            super.dispatchDraw(canvas);
+            delegate.drawOutParentAfter(canvas);
         }
     }
 }
