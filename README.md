@@ -1,3 +1,7 @@
+###说明
+https://jitpack.io/
+该库原文地址 https://github.com/H07000223/FlycoRoundView
+
 #FlycoRoundView
 A library helps Android built-in views easy and convenient to set round rectangle background and accordingly related shape resources can be reduced.
 一个扩展原生控件支持圆角矩形框背景的库,可以减少相关shape资源文件使用.
@@ -7,9 +11,16 @@ A library helps Android built-in views easy and convenient to set round rectangl
 ##Gradle
 
 ```groovy
-dependencies{
-    compile 'com.flyco.roundview:FlycoRoundView_Lib:1.1.4@aar'
-}
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+    dependencies {
+	        implementation 'com.github.zuoni1018:FlycoRoundView_Lib:1.1.5'
+	}
 ```
 
 ###Attributes
@@ -30,4 +41,13 @@ dependencies{
 | rv_cornerRadius_BL | dimension | corner radius bottom left,unit dp
 | rv_cornerRadius_BR | dimension | corner radius bottom right,unit dp
 | rv_isRippleEnable | boolean | is ripple effect enable for Api21+
+
+##更新日志
+
+##2020-09-28
+新增属性
+| rv_isDrawOutParent | boolean | 对超出父布局的内容是否裁剪
+
+
+
 
