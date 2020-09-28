@@ -46,6 +46,8 @@ A library helps Android built-in views easy and convenient to set round rectangl
 
 ##2020-09-28
 新增属性
+|name|format|description|
+|:---:|:---:|:---:|
 | rv_isDrawOutParent | boolean | 对超出父布局的内容是否裁剪
 
 
