@@ -67,13 +67,6 @@ public class RoundViewDelegate {
         ta.recycle();
     }
     
-    
-    public void dispatchDraw(Canvas canvas) {
-        
-    
-    }
-    
-    
     public void setBackgroundColor(int backgroundColor) {
         this.backgroundColor = backgroundColor;
         setBgSelector();
