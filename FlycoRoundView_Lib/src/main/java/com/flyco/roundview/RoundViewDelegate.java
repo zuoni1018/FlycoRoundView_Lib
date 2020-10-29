@@ -310,7 +310,7 @@ public class RoundViewDelegate {
         //计算裁剪圆角
         drawOutParentPath.addRoundRect(new RectF(0, 0,
                 canvas.getWidth(), canvas.getHeight()), radiusArr, Path.Direction.CW);
-        
+    
         if (drawOutParentPaint == null) {
             drawOutParentPaint = new Paint();
             drawOutParentPaint.setColor(Color.WHITE);
@@ -320,7 +320,16 @@ public class RoundViewDelegate {
             // 混合模式为 DST_IN, 即仅显示当前绘制区域和背景区域交集的部分，并仅显示背景内容。
             drawOutParentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
         }
-        canvas.drawPath(drawOutParentPath, drawOutParentPaint);
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
+            drawOutParentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+            canvas.drawPath(drawOutParentPath, drawOutParentPaint);
+        } else {
+            drawOutParentPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
+            Path path = new Path();
+            path.addRect(0, 0, view.getWidth(), view.getHeight(), Path.Direction.CW);
+            path.op(drawOutParentPath, Path.Op.DIFFERENCE);
+            canvas.drawPath(path, drawOutParentPaint);
+        }
         canvas.restore();
     }
     

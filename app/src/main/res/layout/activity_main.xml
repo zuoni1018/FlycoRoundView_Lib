@@ -275,16 +275,20 @@
             android:layout_width="100dp"
             rv:rv_cornerRadius="30dp"
             rv:rv_strokeWidth="1dp"
+            rv:rv_isDrawOutParent="false"
             rv:rv_strokeColor="#0073FF"
             rv:rv_backgroundColor="#FF1717"
             android:layout_height="100dp">
 
             <ImageView
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#47C53E"
                 />
+
+
+
 
         </com.flyco.roundview.RoundRelativeLayout>
     </LinearLayout>
